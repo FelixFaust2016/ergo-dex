@@ -29,7 +29,7 @@ export const DropDown = styled.div`
     position: relative;
     font-size: 1rem;
   }
-`;
+  `;
 
 export const DropBox = styled.div`
   width: calc(100% - 40px);
@@ -39,15 +39,16 @@ export const DropBox = styled.div`
   position: absolute;
   background: ${colors.btn_text_color};
   z-index: 2;
-
+  
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    
     p {
       margin-top: 10px;
       cursor: pointer;
+      color: black !important;
     }
   }
 `;
@@ -59,6 +60,7 @@ export const ChangeInput = styled.div`
   border-radius: 8px;
   margin-top: 10px;
   overflow: hidden;
+  background-color: white;
   div {
     height: 30px;
     border-right: 1px solid rgba(18, 21, 40, 0.3);

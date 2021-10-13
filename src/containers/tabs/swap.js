@@ -13,24 +13,15 @@ import {
 
 const dropDown = [
   {
-    one: "ERG",
-    two: "SigUSD",
-    fee: "0.50%",
-  },
-  {
-    one: "ERG",
-    two: "SigRSD",
-    fee: "0.50%",
-  },
-  {
-    one: "WT_ERG",
-    two: "WT_ADA",
+    one: "RAVE",
+    two: "AUSD",
     fee: "0.40%",
   },
+
   {
-    one: "Erdoge",
-    two: "kushiti",
-    fee: "0.40%",
+    one: "RAVE",
+    two: "ADA",
+    fee: "0.45%",
   },
 ];
 
@@ -80,7 +71,7 @@ export const Swap = () => {
       </DropDown>
       <br />
       <p>
-        1 {one} ≈ 817 {two}
+        1 {one} ≈ 0.81 {two}
       </p>
       <ChangeInput>
         <div>{one}</div>
@@ -94,7 +85,7 @@ export const Swap = () => {
         <input value={0.0} />
       </ChangeInput>
       <BtnContainer>
-        <Button type={"primary"}>Connect to Wallet</Button>
+        <Button type={"primary"}>Connect Wallet</Button>
       </BtnContainer>
     </SwapContainer>
   );

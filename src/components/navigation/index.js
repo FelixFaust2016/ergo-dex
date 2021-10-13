@@ -1,4 +1,4 @@
-import { Button } from "..";
+import { Button, Toggle } from "..";
 import {
   Container,
   NavigationContainer,
@@ -6,20 +6,22 @@ import {
   Spacer,
 } from "./style";
 
-export const Navigation = ({ showModal, showToast }) => {
+export const Navigation = ({ showModal, showToast, setMode, mode }) => {
   return (
     <Container>
       <GeneralContainer>
         <NavigationContainer>
           <img
             style={{ width: "15%", cursor: "pointer" }}
-            src={"/assets/logo.jpeg"}
+            src={"/assets/logo.png"}
             alt={""}
           />
           <Spacer />
-          <Button onClick={showModal}>Usage Guide</Button>
+          <Toggle setToggle={setMode} toggle={mode} />
+          <div style={{width:'20px'}}/>
+          <Button onClick={showModal}>How to Use</Button>
           <Button onClick={showToast} type={"primary"}>
-            Connect to Wallet
+            Connect Wallet
           </Button>
         </NavigationContainer>
       </GeneralContainer>

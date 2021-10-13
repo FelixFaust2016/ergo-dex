@@ -5,3 +5,4 @@ export * from "./feedback";
 export * from "./modal";
 export * from "./tabs";
 export * from "./noWallet";
+export * from "./toggle";

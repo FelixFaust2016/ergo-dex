@@ -10,11 +10,11 @@ export const SettingsModal = ({ closeModal }) => {
       <Info>Miner Fee?</Info>
       <MinerInput>
         <Button type={"primary"}>Auto</Button>
-        <input value={0.002} />
-        <Badge>ERG</Badge>
+        <input value={0.02} />
+        <Badge>RAVE</Badge>
       </MinerInput>
       <Info>Output address?</Info>
-      <Button>Connect to Wallet</Button>
+      <Button>Connect Wallet</Button>
     </Modal>
   );
 };
@@ -26,6 +26,7 @@ const Header = styled.h3`
 const Info = styled.p`
   margin-top: 20px;
   padding-bottom: 10px;
+  color: black!important;
 `;
 
 const MinerInput = styled.div`

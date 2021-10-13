@@ -1,9 +1,9 @@
 import { Container } from "./style";
 
-export const NoWallet = () => {
+export const NoWallet = ({ message }) => {
   return (
     <Container>
-      <p>Not Connected to Wallet</p>
+      <p>{message}</p>
     </Container>
   );
 };
