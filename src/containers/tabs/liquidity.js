@@ -185,6 +185,10 @@ const Container = styled.div`
   @media (max-width: 800px) {
     width: 80%;
   }
+
+  @media (max-width: 500px) {
+    width: 95%;
+  }
 `;
 
 const Body = styled.div`
@@ -216,7 +220,7 @@ const BtnContainer = styled.div`
 `;
 
 const InputContainer = styled.div`
-  width: calc(100% - 80px);
+  width: calc(100% - 40px);
   padding: 20px 20px;
   background-color: rgb(231, 227, 235);
   border-radius: 20px;
@@ -239,11 +243,13 @@ const Input = styled.div`
     font-size: 1rem;
     font-weight: 700;
     background-color: transparent;
+    position: relative;
   }
 
   aside {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     img {
       margin-right: 10px;
