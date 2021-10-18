@@ -1,46 +1,67 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "../../components";
 
 import {
   SwapContainer,
-  DropDown,
   DropBox,
   ChangeInput,
   SwitchBtn,
   BtnContainer,
+  DropContainer,
+  InputFlex,
 } from "./style";
 
-const dropDown = [
-  {
-    one: "RAVE",
-    two: "AUSD",
-    fee: "0.40%",
+const data = {
+  rates: {
+    ADA: 0.00225,
+    AUSD: 0.00023,
   },
 
-  {
-    one: "RAVE",
-    two: "ADA",
-    fee: "0.45%",
-  },
-];
+  base: "RAVE",
+};
 
 export const Swap = () => {
-  const [drop, toggleDropDown] = useState(false);
-  const [one, setOne] = useState(dropDown[0].one);
-  const [two, setTwo] = useState(dropDown[0].two);
-  const [fee, setFee] = useState(dropDown[0].fee);
+  const [currencyList, setCurrencyList] = useState([]);
+  const [fromCurrency, setFromCurrency] = useState();
+  const [toCurrency, setToCurrency] = useState();
+  const [exchangeRate, setExchangeRates] = useState();
+  const [amount, setAmount] = useState(1);
+  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
 
-  const handleSelectInput = (one, two, fee) => {
-    setOne(one);
-    setTwo(two);
-    setFee(fee);
-    toggleDropDown(false);
+  const [reverseField, setReverseField] = useState(false);
+
+  let toAmount, fromAmount;
+
+  if (amountInFromCurrency) {
+    fromAmount = amount;
+    toAmount = amount * exchangeRate;
+  } else {
+    toAmount = amount;
+    fromAmount = amount / exchangeRate;
+  }
+
+  const onChangeFromAmount = (e) => {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(true);
   };
 
-  const switchPrices = () => {
-    setOne(two);
-    setTwo(one);
+  const onChangeToAmount = (e) => {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(false);
+  };
+
+  useEffect(() => {
+    setCurrencyList([...Object.keys(data.rates)]);
+    const firstCurrency = Object.keys(data.rates)[0];
+    setFromCurrency(data.base);
+    setToCurrency(firstCurrency);
+    setExchangeRates(data.rates[firstCurrency]);
+  }, []);
+
+
+  const switchPlaces = () => {
+    setReverseField(!reverseField);
   };
 
   return (
@@ -48,42 +69,38 @@ export const Swap = () => {
       <header>
         <p>Swap</p>
       </header>
-      <DropDown>
-        <input
-          onClick={() => toggleDropDown(!drop)}
-          value={`Pool: ${one} - ${two}, Fee ${fee}`}
-        />
 
-        {drop && (
-          <DropBox>
-            {dropDown.map((drop, i) => (
-              <div
-                onClick={() => handleSelectInput(drop.one, drop.two, drop.fee)}
-              >
-                <p key={i}>
-                  {drop.one} - {drop.two}
-                </p>
-                <p>Fee: {drop.fee}</p>
-              </div>
-            ))}
-          </DropBox>
-        )}
-      </DropDown>
+      <DropContainer>
+        <DropBox onChange={(e) => setToCurrency(e.target.value)}>
+          {currencyList.map((drop) => (
+            <option key={drop} value={drop}>
+              {drop === "ADA"
+                ? "Pool: RAVE - ADA, Fee 0.45%"
+                : "Pool: RAVE - AUSD, Fee 0.45%"}
+            </option>
+          ))}
+        </DropBox>
+      </DropContainer>
+
       <br />
-      <p>
-        1 {one} ≈ 0.81 {two}
-      </p>
-      <ChangeInput>
-        <div>{one}</div>
-        <input value={0.0} />
-      </ChangeInput>
-      <SwitchBtn onClick={switchPrices}>
-        <img src={"/assets/down.svg"} alt={""} />
-      </SwitchBtn>
-      <ChangeInput>
-        <div>{two}</div>
-        <input value={0.0} />
-      </ChangeInput>
+      <p>1 {data.base} ≈ 0.00025 {toCurrency}</p>
+      <InputFlex switch={reverseField}>
+        <ChangeInput>
+          <div>{fromCurrency}</div>
+          <input
+            value={fromAmount}
+            type="number"
+            onChange={onChangeFromAmount}
+          />
+        </ChangeInput>
+        <SwitchBtn onClick={switchPlaces}>
+          <img src={"/assets/down.svg"} alt={""} />
+        </SwitchBtn>
+        <ChangeInput>
+          <div>{toCurrency}</div>
+          <input value={toAmount} type="number" onChange={onChangeToAmount} />
+        </ChangeInput>
+      </InputFlex>
       <BtnContainer>
         <Button type={"primary"}>Connect Wallet</Button>
       </BtnContainer>

@@ -14,6 +14,7 @@ import {
   Deposit,
   CreateNFT,
   Charts,
+  Liquidity,
 } from "../../containers";
 
 const tabs = [
@@ -23,7 +24,7 @@ const tabs = [
   },
   {
     name: "Liquidity",
-    component: "",
+    component: <Liquidity />,
   },
   {
     name: "Stake",

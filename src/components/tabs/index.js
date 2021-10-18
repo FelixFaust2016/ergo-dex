@@ -11,12 +11,6 @@ export const Tabs = ({ tabs }) => {
 
   return (
     <Container>
-      {tabs.map(
-        (tab, i) =>
-          currentTab - 1 === i && (
-            <TabComponent key={i}>{tab.component}</TabComponent>
-          )
-      )}
       <TabContainer>
         {tabs.map((tab, i) => (
           <Tab
@@ -28,6 +22,12 @@ export const Tabs = ({ tabs }) => {
           </Tab>
         ))}
       </TabContainer>
+      {tabs.map(
+        (tab, i) =>
+          currentTab - 1 === i && (
+            <TabComponent key={i}>{tab.component}</TabComponent>
+          )
+      )}
     </Container>
   );
 };

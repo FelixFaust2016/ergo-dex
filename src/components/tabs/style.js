@@ -25,8 +25,7 @@ export const TabContainer = styled.div`
   border-radius: 14px;
   background: #121528;
   margin-top: 20px;
-  position: absolute;
-  top: 70%;
+  /* position: absolute; */
 `;
 
 export const Tab = styled.div`

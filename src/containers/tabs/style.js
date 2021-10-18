@@ -10,6 +10,11 @@ export const SwapContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    p {
+      padding-bottom: 5px;
+      font-weight: 700;
+    }
   }
 
   @media (max-width: 800px) {
@@ -17,47 +22,25 @@ export const SwapContainer = styled.div`
   }
 `;
 
-export const DropDown = styled.div`
-  position: relative;
-  input {
-    width: calc(100% - 40px);
-    border: 1px solid rgba(18, 21, 40, 0.3);
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin-top: 10px;
-    outline: none;
-    position: relative;
-    font-size: 1rem;
-  }
-  `;
-
-export const DropBox = styled.div`
-  width: calc(100% - 40px);
-  border: 1px solid rgba(18, 21, 40, 0.3);
+export const DropContainer = styled.div`
   padding: 10px 20px;
-  margin-top: 5px;
-  position: absolute;
+  border: 1px solid rgba(18, 21, 40, 0.3);
+  border-radius: 4px;
   background: ${colors.btn_text_color};
-  z-index: 2;
-  
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-    p {
-      margin-top: 10px;
-      cursor: pointer;
-      color: black !important;
-    }
-  }
+`;
+
+export const DropBox = styled.select`
+  width: 100%;
+  border: 0px;
+  margin-top: 5px;
+  outline: none;
 `;
 
 export const ChangeInput = styled.div`
   display: flex;
   align-items: center;
   border: 1px solid rgba(18, 21, 40, 0.3);
-  border-radius: 8px;
+  border-radius: 5px;
   margin-top: 10px;
   overflow: hidden;
   background-color: white;
@@ -69,6 +52,8 @@ export const ChangeInput = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   input {
@@ -86,15 +71,13 @@ export const ChangeInput = styled.div`
 export const SwitchBtn = styled.div`
   width: 30px;
   height: 30px;
+  margin: 10px auto;
+  margin-bottom: 0px;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
   background: ${colors.btn_bg_color_primary};
-  z-index: 1;
-  left: 50%;
-  top: 55%;
   transform: translate(-50%, 0);
   cursor: pointer;
   display: flex;
@@ -112,4 +95,10 @@ export const BtnContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+`;
+
+export const InputFlex = styled.div`
+  display: flex;
+  flex-direction: ${(props) =>
+    props.switch === false ? "column" : "column-reverse"};
 `;

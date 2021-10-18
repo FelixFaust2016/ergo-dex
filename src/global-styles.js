@@ -4,9 +4,9 @@ export const GlobalStyles = createGlobalStyle`
     * {
         margin: 0;
         padding: 0;
+        font-family: 'Nunito', sans-serif;
     }
     html, body {
-        font-family: 'Nunito', sans-serif;
         font-size: 16px;
     }
 
