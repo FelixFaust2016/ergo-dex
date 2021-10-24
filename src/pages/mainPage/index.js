@@ -10,7 +10,7 @@ import {
   HowItWorks,
   SettingsModal,
   Swap,
-  Redeem,
+  Stake,
   Deposit,
   CreateNFT,
   Charts,
@@ -28,7 +28,7 @@ const tabs = [
   },
   {
     name: "Stake",
-    component: <Redeem />,
+    component: <Stake />,
   },
   {
     name: "NFT",
@@ -79,7 +79,8 @@ export const MainPage = () => {
 const Container = styled.div`
   width: 100%;
   background-color: ${({ mode }) => (mode ? colors.background : "")};
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   transition: 0.5s ease-in-out;
   p {
     color: ${({ mode }) => (mode ? "white" : "")};

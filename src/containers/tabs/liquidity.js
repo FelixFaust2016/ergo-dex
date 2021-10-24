@@ -20,7 +20,7 @@ export const Liquidity = () => {
   const [amount, setAmount] = useState(1);
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
 
-  console.log(currencyList, fromCurrency, toCurrency)
+  console.log(currencyList, fromCurrency, toCurrency);
 
   let toAmount, fromAmount;
 
@@ -80,9 +80,8 @@ export const Liquidity = () => {
                 <input value={toAmount} onChange={onChangeToAmount} />
                 <aside>
                   <img
-                    width={"40px"}
                     height={"20px"}
-                    src={"/assets/cada.svg"}
+                    src={"/assets/ada.svg"}
                     alt={""}
                   />
 
